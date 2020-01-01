@@ -12,7 +12,7 @@ public enum MovieType {
     DC(4, "DC"),
     MIND_BENDING(5, "Mind Bending"),
     CHRISTOPHER_NOLAN(6, "Christopher Nolan"),
-    SPACE(7, "SPACE"),
+    SPACE(7, "Space"),
     PARALLEL_UNIVERSE(8, "Parallel Universe"),
     MYSTERY(9, "Mystery"),
     DEJA_VU(10, "Deja Vu"),
