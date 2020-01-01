@@ -5,36 +5,56 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum MovieType {
-    TIME_TRAVEL(1),
-    TIME_LOOP(2),
-    MARVEL(3),
-    DC(4),
-    MIND_BENDING(5),
-    CHRISTOPHER_NOLAN(6),
-    SPACE(7),
-    PARALLEL_UNIVERSE(8),
-    MYSTERY(9),
-    DEJA_VU(10),
-    PSYCHOLOGICAL_THRILLERS(11);
+    NOT_FOUND(0, "Un-Categorised"),
+    TIME_TRAVEL(1, "Time Travel"),
+    TIME_LOOP(2, "Time Loop"),
+    MARVEL(3, ""),
+    DC(4, "DC"),
+    MIND_BENDING(5, "Mind Bending"),
+    CHRISTOPHER_NOLAN(6, "Christopher Nolan"),
+    SPACE(7, "SPACE"),
+    PARALLEL_UNIVERSE(8, "Parallel Universe"),
+    MYSTERY(9, "Mystery"),
+    DEJA_VU(10, "Deja Vu"),
+    PSYCHOLOGICAL_THRILLERS(11, "Psychological Thrillers"),
+    SI_FI(12, "Si-Fi");
 
-    private int type;
+    public Integer id;
+    public String type;
 
-    MovieType(int type) {
+    MovieType(Integer id, String type) {
+        this.id = id;
         this.type = type;
     }
 
 
-    public MovieType getType(int movieType) {
+    public static MovieType getType(Integer movieType) {
         List<MovieType> movieTypes = Stream.of(MovieType.values())
-                .filter(val -> val.type == movieType)
+                .filter(val -> val.id == movieType)
                 .collect(Collectors.toList());
 
         if (movieTypes.size() > 1) {
-            throw new RuntimeException("Duplicate movie type found");
+            return NOT_FOUND;
         } else if (movieTypes.size() == 1) {
             return movieTypes.get(0);
         } else {
-            return null;
+            return NOT_FOUND;
+        }
+    }
+
+
+    public static MovieType getTypeFromName(String movieType) {
+        List<MovieType> movieTypes =
+                Stream.of(MovieType.values())
+                        .filter(val -> val.type == movieType)
+                        .collect(Collectors.toList());
+
+        if (movieTypes.size() > 1) {
+            return NOT_FOUND;
+        } else if (movieTypes.size() == 1) {
+            return movieTypes.get(0);
+        } else {
+            return NOT_FOUND;
         }
     }
 
