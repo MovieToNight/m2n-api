@@ -8,7 +8,7 @@ public enum MovieType {
     NOT_FOUND(0, "Un-Categorised"),
     TIME_TRAVEL(1, "Time Travel"),
     TIME_LOOP(2, "Time Loop"),
-    MARVEL(3, ""),
+    MARVEL(3, "Marvel"),
     DC(4, "DC"),
     MIND_BENDING(5, "Mind Bending"),
     CHRISTOPHER_NOLAN(6, "Christopher Nolan"),
