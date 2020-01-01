@@ -76,4 +76,13 @@ public class MovieRestController {
         MovieType type = MovieType.getTypeFromName(movieType);
         return movieService.getMovieTypes(movieType);
     }
+
+
+    @GetMapping(value = "/allMovies")
+    @CrossOrigin
+    public List<MovieCard> getMovies() {
+        return movieService.getMovie();
+    }
+
+
 }

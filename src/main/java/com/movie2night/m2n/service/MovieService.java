@@ -28,4 +28,8 @@ public class MovieService {
     public List<MovieCard> getMovieTypes(String movieType) {
         return movieRepository.getMovieCardByType(movieType);
     }
+
+    public List<MovieCard> getMovie() {
+        return movieRepository.getMovieCardsByNameNotNull();
+    }
 }

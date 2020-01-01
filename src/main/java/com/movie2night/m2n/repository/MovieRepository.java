@@ -9,4 +9,6 @@ import java.util.List;
 public interface MovieRepository extends CrudRepository<MovieCard, Long> {
 
     List<MovieCard> getMovieCardByType(String movieType);
+
+    List<MovieCard> getMovieCardsByNameNotNull();
 }
