@@ -80,6 +80,7 @@ public class MovieRestController {
         return movieService
                 .getMovieTypes(movieType)
                 .stream()
+                .filter(movieCard -> movieCard.getName() != null)
                 .filter(movieCard -> !movieCard.getName().equals(movieName))
                 .collect(Collectors.toList());
     }
