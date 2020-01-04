@@ -19,4 +19,6 @@ public interface MovieRepository extends CrudRepository<MovieCard, Long> {
 
     List<MovieCard> getMovieCardsByNameNotNull();
 
+    MovieCard findMovieCardByName(String name);
+
 }

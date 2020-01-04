@@ -72,6 +72,14 @@ public class MovieRestController {
                 .collect(Collectors.toList());
     }
 
+
+    @GetMapping(value = "/similarMovies/{movieName}")
+    @CrossOrigin
+    public List<MovieCard> getSimilarMovies(@PathVariable String movieName) {
+        String movieType = movieService.getMovieTypeByName(movieName).getType();
+        return movieService.getMovieTypes(movieType);
+    }
+
     @GetMapping(value = "/movieWithPoster")
     @CrossOrigin
     public List<MovieTitleAndPoster> getAllMovieWithPoster() {

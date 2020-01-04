@@ -37,4 +37,8 @@ public class MovieService {
     public Set<String[]> getMovieListWithPoster() {
         return movieRepository.findNameAndUrl();
     }
+
+    public MovieCard getMovieTypeByName(String name) {
+        return movieRepository.findMovieCardByName(name);
+    }
 }
