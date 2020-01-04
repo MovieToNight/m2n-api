@@ -2,6 +2,8 @@ package com.movie2night.m2n.rest;
 
 import com.movie2night.m2n.model.MovieType;
 import com.movie2night.m2n.pojo.MovieCard;
+import com.movie2night.m2n.pojo.MovieTitleAndPoster;
+import com.movie2night.m2n.pojo.MyImage;
 import com.movie2night.m2n.pojo.TypeToMovieWrapper;
 import com.movie2night.m2n.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,24 @@ public class MovieRestController {
         return Stream.of(MovieType.values())
                 .filter(type -> type.type != MovieType.NOT_FOUND.type)
                 .map(val -> val.type)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping(value = "/movieWithPoster")
+    @CrossOrigin
+    public List<MovieTitleAndPoster> getAllMovieWithPoster() {
+        return movieService.getMovieListWithPoster()
+                .stream()
+                .map(val -> {
+                    if (val.length == 2) {
+                        return new MovieTitleAndPoster(val[0], val[0], val[0], new MyImage(true, val[1]));
+                    } else if (val.length == 1) {
+                        return new MovieTitleAndPoster(val[0], val[0], val[0], new MyImage());
+                    } else {
+                        return new MovieTitleAndPoster();
+                    }
+                })
+                .distinct()
                 .collect(Collectors.toList());
     }
 

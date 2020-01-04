@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class MovieService {
@@ -31,5 +32,9 @@ public class MovieService {
 
     public List<MovieCard> getMovie() {
         return movieRepository.getMovieCardsByNameNotNull();
+    }
+
+    public Set<String[]> getMovieListWithPoster() {
+        return movieRepository.findNameAndUrl();
     }
 }

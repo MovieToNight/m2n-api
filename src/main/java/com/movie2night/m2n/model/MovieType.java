@@ -1,6 +1,7 @@
 package com.movie2night.m2n.model;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,7 +18,8 @@ public enum MovieType {
     MYSTERY(9, "Mystery"),
     DEJA_VU(10, "Deja Vu"),
     PSYCHOLOGICAL_THRILLERS(11, "Psychological Thrillers"),
-    SI_FI(12, "Si-Fi");
+    SI_FI(12, "Si-Fi"),
+    HORROR(13, "Horror");
 
     public Integer id;
     public String type;
@@ -30,7 +32,7 @@ public enum MovieType {
 
     public static MovieType getType(Integer movieType) {
         List<MovieType> movieTypes = Stream.of(MovieType.values())
-                .filter(val -> val.id == movieType)
+                .filter(val -> Objects.equals(val.id, movieType))
                 .collect(Collectors.toList());
 
         if (movieTypes.size() > 1) {
@@ -46,7 +48,7 @@ public enum MovieType {
     public static MovieType getTypeFromName(String movieType) {
         List<MovieType> movieTypes =
                 Stream.of(MovieType.values())
-                        .filter(val -> val.type == movieType)
+                        .filter(val -> Objects.equals(val.type, movieType))
                         .collect(Collectors.toList());
 
         if (movieTypes.size() > 1) {
