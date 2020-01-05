@@ -5,6 +5,7 @@ import com.movie2night.m2n.pojo.MovieCard;
 import com.movie2night.m2n.pojo.MovieTitleAndPoster;
 import com.movie2night.m2n.pojo.MyImage;
 import com.movie2night.m2n.pojo.TypeToMovieWrapper;
+import com.movie2night.m2n.service.FeedbackService;
 import com.movie2night.m2n.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,8 @@ public class MovieRestController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private FeedbackService feedbackService;
 
     @PostMapping(value = "/add", consumes = "application/json")
     @CrossOrigin
@@ -117,5 +120,11 @@ public class MovieRestController {
         return movieService.getMovie();
     }
 
+
+    @PostMapping(value = "/feedback")
+    @CrossOrigin
+    public void feedback(@RequestBody String message) {
+        feedbackService.save(message);
+    }
 
 }
